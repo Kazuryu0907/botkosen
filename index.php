@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/vendor/autoload.php';
-
+require_once dirname(__FILE__) .'/simplehtmldom_1_5/simple_html_dom.php';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_BOT_CHANNEL_TOKEN'));
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('LINE_BOT_CHANNEL_SECRET')]);
@@ -51,7 +51,44 @@ foreach ($events as $event) {
   		}
   		$Gettext = (string)$event->getText();
   			
+  		$random = explode(",",$Gettext);
+  		if ($random[0] == "Random") {
+  			
+  			//$calums = (int)random[1];
+  		    if(is_numeric($random[1])){
+  		    	
+  		    	$num = (int)$random[1];
+  			
+  			//$num = (int)$calmus;
   		
+  			$para = rand(1,$num);
+				$fn = $para+= 2;
+				$fn = (int)$fn;
+  		    
+  		    replyMultiMessage($bot, $event->getReplyToken(),
+    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("Random is running"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($random[1]),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("選ばれたのは・・・"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($random[rand(1,$num)+2]));
+    									//new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($fn));
+    									
+  		
+  			//$bot->replyText($event->getReplyToken(), $para);
+  			
+  			
+       			//$bot->replyText($event->getReplyToken(), $random[$para]);
+}else{
+	$bot->replyText($event->getReplyToken(),"無効な値です");
+}
+if (strpos('じゃあ',$Gettext == TRUE)){
+	$bot->replyText($event->getReplyToken(), "じゃあ");
+	if(strpos('っていうのは…',$Gettext == TRUE)){
+		$bot->replyText($event->getReplyToken(), "やりますねぇ！！");
+	}
+
+}
+}
+  
 			
 						switch($Gettext)
 						{
@@ -61,8 +98,31 @@ foreach ($events as $event) {
     									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Kosen'で高専ＨＰの更新をチェックできます"),
     									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("荒らし行為はやめましょうby kazuryu"));
 						break;
+						/*
+						case "!@everyone":
+							$cut = $Gettext;
+								//$cut = str_replace('!@everyone','',$cut);
+									replyMultiMessage($bot, $event->getReplyToken(),
+    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("!@everyone was called."),
+    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($cut));
+    				 				 		//$bot->replyText($event->getReplyToken(), "Everyone!");
+						break;
 						
+						case "Yaju":
+						replyImageMessage($bot, $event->getReplyToken(), "https://" . $_SERVER["HTTP_HOST"] . 
+				"/imgs/original.jpg", "https://" . $_SERVER["HTTP_HOST"] . "/imgs/preview.jpg");
+						break;
 						
+						case "Hira":
+						replyImageMessage($bot, $event->getReplyToken(), "https://" . $_SERVER["HTTP_HOST"] . 
+				"/imgs/hira.jpg", "https://" . $_SERVER["HTTP_HOST"] . "/imgs/hira.jpg");
+						break;
+						
+						case "Nakahata":
+						replyImageMessage($bot, $event->getReplyToken(), "https://" . $_SERVER["HTTP_HOST"] . 
+				"/imgs/original.jpg", "https://" . $_SERVER["HTTP_HOST"] . "/imgs/preview.jpg");
+						break;
+					*/
 						case "Kosen":
 						$year = date("Y").'/';
 						$month = date("m").'/';
@@ -79,8 +139,15 @@ foreach ($events as $event) {
 						}
 						break;
 
+					/*case "やるんだ":
+					
+						$bot->replyText($event->getReplyToken(),"やりますやります！！" );
+						break;
+						case "じゃあオナニー、とかっていうのは？":
+						$bot->replyText($event->getReplyToken(),"やりますねぇ！" );
+						break;
 						
-						
+					*/
 						
 					//���ׂĈႤ�ꍇ
 					default:
