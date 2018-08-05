@@ -169,13 +169,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 							preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
 							$return = str_replace('</span>', '', $return);
 							$return = str_replace('</dt>', '', $return);
-							if($return[2] == "[○]平常運転"){
-								$bot->replyText($event->getReplyToken(), "ただいま平常運転です");
-							}else{
-								replyMultiMessage($bot, $event->getReplyToken(),
-							new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("平常じゃない・・！？"),
-							new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($html));
-							}
+							$bot->replyText($event->getReplyToken(), $return[2]);
 								
 
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
