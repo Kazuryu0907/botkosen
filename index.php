@@ -96,7 +96,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						//$bot->replyText($event->getReplyToken(),"'Kosen'で高専ＨＰの更新をチェックできます".'\n'."荒らし行為はやめましょうby kazuryu" );
 						replyMultiMessage($bot, $event->getReplyToken(),
     									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Kosen'で高専ＨＰの更新をチェックできます"),
-    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("荒らし行為はやめましょうby kazuryu"));
+    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Keihanchien'で京阪の遅延証明書が発行されているか確認できます"));
 						break;
 						/*
 						case "!@everyone":
@@ -150,9 +150,12 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						
 					*/
 						case "Keihanchien":
-						$year = date("Y");
-						$month = date("m");
-						$day = date("d");
+						//$year = date("Y");
+						//$month = date("m");
+						//$day = date("d");
+						$year = "2018";
+						$month = "08";
+						$day = "02";
 						$URL = "https://www.keihan.co.jp/traffic/traintraffic/delay/detail/".$year.$month.$day."_001_001.html";
 						$respon = @file_get_contents($URL,NULL,NULL,0,1);
 						if($respon !== false){
