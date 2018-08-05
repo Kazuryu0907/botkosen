@@ -146,9 +146,40 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						case "じゃあオナニー、とかっていうのは？":
 						$bot->replyText($event->getReplyToken(),"やりますねぇ！" );
 						break;
+
 						
 					*/
-						
+						case "Keihanchien":
+						$year = date("Y");
+						$month = date("m");
+						$day = date("d");
+						$URL = "https://www.keihan.co.jp/traffic/traintraffic/delay/detail/".$year.$month.$day."_001_001.html";
+						$respon = @file_get_contents($URL,NULL,NULL,0,1);
+						if($respon !== false){
+							replyMultiMessage($bot, $event->getReplyToken(),
+							new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("遅延証明書を発行します！"),
+							new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($URL));
+						}else{
+						$bot->replyText($event->getReplyToken(),"遅延情報はありません");
+						}
+						break;
+						case "Keihan":
+						$bun = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/300/0/");
+
+$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
+$replace = str_replace('div id="mdServiceStatus">
+<dl>
+<dt><span class="icnNormalLarge">[○]</span>', '', $mojiretu);
+$rereplace = str_replace('</dt>
+<dd class="normal">', '', $replace);
+$f = str_replace('</p>
+</dd>
+</dl>', '', $rereplace);
+$k = str_replace('<p>', '', $f);
+$bot->replyText($event->getReplyToken(), $k);
+
+
+
 					//���ׂĈႤ�ꍇ
 					default:
 						 //$bot->replyText($event->getReplyToken(), $event->getText());
