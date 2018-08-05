@@ -166,15 +166,17 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						case "Keihan":
 						$bun = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/300/0/");
 
-$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
-$replace = str_replace('div id="mdServiceStatus">
+//$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
+$replace = str_replace('<div id="mdServiceStatus">', '', $bun);
+$aaaa = str_replace('</div><!--/#mdServiceStatus-->', '', $replace);
+$re = str_replace('div id="mdServiceStatus">
 <dl>
-<dt><span class="icnNormalLarge">[○]</span>', '', $mojiretu);
-$rereplace = str_replace('</dt>
-<dd class="normal">', '', $replace);
+<dt><span class="icnNormalLarge">[○]</span>', '', $aaaa);
+$place = str_replace('</dt>
+<dd class="normal">', '', $re);
 $f = str_replace('</p>
 </dd>
-</dl>', '', $rereplace);
+</dl>', '', $place);
 $k = str_replace('<p>', '', $f);
 $bot->replyText($event->getReplyToken(), $k);
 
