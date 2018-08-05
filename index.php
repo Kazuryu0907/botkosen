@@ -95,7 +95,8 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						case "!help":
 						//$bot->replyText($event->getReplyToken(),"'Kosen'で高専ＨＰの更新をチェックできます".'\n'."荒らし行為はやめましょうby kazuryu" );
 						replyMultiMessage($bot, $event->getReplyToken(),
-    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Kosen'で高専ＨＰの更新をチェックできます"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Kosen'で高専ＨＰの更新を確認できます"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Keihan'で京阪の現在の運行情報を確認できます"),
     									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Keihanchien'で京阪の遅延証明書が発行されているか確認できます"));
 						break;
 						/*
