@@ -150,12 +150,10 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						
 					*/
 						case "Keihanchien":
-						//$year = date("Y");
-						//$month = date("m");
-						//$day = date("d");
-						$year = "2018";
-						$month = "08";
-						$day = "02";
+						$year = date("Y");
+						$month = date("m");
+						$day = date("d");
+					
 						$URL = "https://www.keihan.co.jp/traffic/traintraffic/delay/detail/".$year.$month.$day."_001_001.html";
 						$respon = @file_get_contents($URL,NULL,NULL,0,1);
 						if($respon !== false){
