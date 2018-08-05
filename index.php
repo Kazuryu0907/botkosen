@@ -165,21 +165,20 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						}
 						break;
 						case "Keihan":
-						$bun = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/300/0/");
+						$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/300/0/");
+							preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
+							$return = str_replace('</span>', '', $return);
+							$return = str_replace('</dt>', '', $return);
+							if($return[2] == "[○]平常運転"){
+								$bot->replyText($event->getReplyToken(), "ただいま平常運転です");
+							}else{
+								replyMultiMessage($bot, $event->getReplyToken(),
+							new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("平常じゃない・・！？"),
+							new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($html));
+							}
+								
 
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
-$replace = str_replace('<div id="mdServiceStatus">', '', $bun);
-$aaaa = str_replace('</div><!--/#mdServiceStatus-->', '', $replace);
-$re = str_replace('div id="mdServiceStatus">
-<dl>
-<dt><span class="icnNormalLarge">[○]</span>', '', $aaaa);
-$place = str_replace('</dt>
-<dd class="normal">', '', $re);
-$f = str_replace('</p>
-</dd>
-</dl>', '', $place);
-$k = str_replace('<p>', '', $f);
-$bot->replyText($event->getReplyToken(), $k);
 
 
 
