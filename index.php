@@ -222,9 +222,11 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
 								case "K":
-								$file = "test.txt";
+								$file = "test.json";
 								$contents = file_get_contents($file);
-								$bot->replyText($event->getReplyToken(), $contents);
+								$decoded_json = json_decode($contents);
+								$name =$decoded_json->{"name"};
+								$bot->replyText($event->getReplyToken(), $name);
 
 
 
