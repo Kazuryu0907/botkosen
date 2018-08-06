@@ -221,6 +221,12 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								break;
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
+								case "K":
+								$file = "test.txt";
+								$contents = file_get_contents($file);
+								$bot->replyText($event->getReplyToken(), $contents);
+
+
 
 
 					//���ׂĈႤ�ꍇ
