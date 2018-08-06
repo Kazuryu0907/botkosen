@@ -226,9 +226,10 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								$new["kaoakajf"] = array("this is test" => "テストなり");
 								$j = json_encode($new);
 								file_put_contents($file,$j,FILE_APPEND);
+								fclose($file);
 								$contents = file_get_contents($file);
-								$decoded_json = json_decode($contents);
-								$name =$decoded_json->{"name"};
+								$decoded_json = json_decode($contents,true);
+								//$name =$decoded_json->{"name"};
 								$bot->replyText($event->getReplyToken(), $name);
 
 
