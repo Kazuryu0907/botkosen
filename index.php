@@ -223,6 +223,9 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 
 								case "K":
 								$file = "test.json";
+								$new["kaoakajf"] = array("this is test" => "テストなり");
+								$j = json_encode($new);
+								file_put_contents($file,$j,FILE_APPEND);
 								$contents = file_get_contents($file);
 								$decoded_json = json_decode($contents);
 								$name =$decoded_json->{"name"};
