@@ -232,7 +232,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								$contents = file_get_contents($file);
 								$decoded_json = json_decode($contents,true);
 								//$name =$decoded_json->{"name"};
-								$bot->replyText($event->getReplyToken(), $name);
+								$bot->replyText($event->getReplyToken(), $decoded_json);
 
 
 
