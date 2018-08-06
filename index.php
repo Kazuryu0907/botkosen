@@ -96,7 +96,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						//$bot->replyText($event->getReplyToken(),"'Kosen'で高専ＨＰの更新をチェックできます".'\n'."荒らし行為はやめましょうby kazuryu" );
 						replyMultiMessage($bot, $event->getReplyToken(),
 											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Kosen'で高専ＨＰの更新を確認できます"),
-											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("運行情報確認:'Keihan'(京阪本線・鴨東線).'Mono(大阪モノレール線)'.'Metoro'(大阪メトロ御堂筋線).'Jr'(学研都市線).'JrT'(JR東西線).'Minou'(阪急箕面線).'Takara'(阪急宝塚本線)"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("運行情報確認:'Keihan'(京阪本線・鴨東線).'Mono(大阪モノレール線)'.'Metro'(大阪メトロ御堂筋線).'Jr'(学研都市線).'JrT'(JR東西線).'Minou'(阪急箕面線).'Takara'(阪急宝塚本線)"),
     									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Keihanchien'で京阪の遅延証明書が発行されているか確認できます"));
 						break;
 						/*
@@ -180,7 +180,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 							$bot->replyText($event->getReplyToken(), "大阪モノレール線".$return[2]);
 							break;
 
-							case "Metoro":
+							case "Metro":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/321/0/");
 							preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
 							$return = str_replace('</span>', '', $return);
