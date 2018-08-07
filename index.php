@@ -225,10 +225,10 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								$file = "test.txt";
 								$fp = fopen($file,'r');
 								
-								//while(!feof($fp)){
+								while(!feof($fp)){
 									$txt = fgets($fp);
-										//$alltxt += $txt."\n";
-//}
+										$alltxt .= $txt."\n";
+}
 									$bot->replyText($event->getReplyToken(), $txt);
 								fclose($fp);
 								
