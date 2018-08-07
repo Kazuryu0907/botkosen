@@ -221,7 +221,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								break;
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
-								case "K":
+								case "R":
 								$file = "test.txt";
 								$fp = fopen($file,'r');
 								
@@ -231,7 +231,12 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 }
 									$bot->replyText($event->getReplyToken(), $alltxt);
 								fclose($fp);
-								
+								case "W":
+								$file = "test.txt";
+								$fp = fopen($file,'w');
+								fwrite($fp,"テスト");
+								fclose($fp);
+
 
 
 
