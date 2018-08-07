@@ -233,7 +233,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								fclose($fp);
 								case "W":
 								$file = "test.txt";
-								$fp = fopen($file,'w');
+								$fp = fopen($file,'a');
 								fwrite($fp,"テスト");
 								fclose($fp);
 
