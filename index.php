@@ -85,6 +85,14 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 	if(strpos('っていうのは…',$Gettext == TRUE)){
 		$bot->replyText($event->getReplyToken(), "やりますねぇ！！");
 	}
+	if($random[0] == "!w"){
+								$file = "test.txt";
+								$fp = fopen($file,'a');
+								$write = $random[1].",";
+								fwrite($fp,$write);
+								fclose($fp);
+
+	}
 
 }
 }
@@ -232,11 +240,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 									$bot->replyText($event->getReplyToken(), $alltxt);
 								fclose($fp);
 								case "W":
-								$file = "test.txt";
-								$fp = fopen($file,'a');
-								fwrite($fp,"テスト");
-								fclose($fp);
-
+								
 
 
 
