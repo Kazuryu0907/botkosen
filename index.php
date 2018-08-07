@@ -222,18 +222,16 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
 								case "K":
-								$file = "test.json";
-								$contents = file_get_contents($file);
-								$new["kaoakajf"] = array("this is test" => "テストなり");
-								$b = $contents.$new;
-								$j = json_encode($b);
-								file_put_contents($file,$j,FILE_APPEND);
-								fclose($contents);
-								$contents = file_get_contents($file);
-								$decoded_json = json_decode($contents,true);
-								//$name =$decoded_json->{"name"};
-								$bot->replyText($event->getReplyToken(), $decoded_json);
-
+								$file = "test.txt";
+								$fp = fopen($file,'r');
+								
+								while(!feof($fp)){
+									$txt = fgets($fp);
+										$alltxt += $txt."\n";
+}
+									$bot->replyText($event->getReplyToken(), $alltxt);
+								fclose($fp);
+								
 
 
 
