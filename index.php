@@ -229,7 +229,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 									$txt = fgets($fp);
 										$alltxt .= "[".$txt."]";
 }
-									$bot->replyText($event->getReplyToken(), $txt);
+									$bot->replyText($event->getReplyToken(), $alltxt);
 								fclose($fp);
 								
 
