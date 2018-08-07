@@ -227,7 +227,7 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 								
 								while(!feof($fp)){
 									$txt = fgets($fp);
-										$alltxt .= $txt."\n";
+										$alltxt .= "[".$txt."]";
 }
 									$bot->replyText($event->getReplyToken(), $txt);
 								fclose($fp);
