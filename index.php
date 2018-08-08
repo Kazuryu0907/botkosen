@@ -72,7 +72,8 @@ foreach ($events as $event) {
 			$text = explode("\n",'test.txt');
 			$pattern = $random[1];
 			for($i = 0;$i <=count($text)- 1;$i++){
-				if(ereg($pattern,$text[$i])){
+				$pos = strpos($text[$i],$pattern);
+				if($pos !== false){
 					unset($text[$i]);
 					file_put_contents('test.txt',$text);
 					replyMultiMessage($bot, $event->getReplyToken(),
