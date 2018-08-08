@@ -282,7 +282,13 @@ foreach ($events as $event) {
 								break;
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
-								case "R":
+case "Tango":
+$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/375/0/");
+preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
+$return = str_replace('</span>', '', $return);
+$return = str_replace('</dt>', '', $return);
+$bot->replyText($event->getReplyToken(), "京都丹後".$return[2]);
+break;
 								
 
 
