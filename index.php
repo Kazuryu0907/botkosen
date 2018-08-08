@@ -68,15 +68,26 @@ foreach ($events as $event) {
 		  }
 		  if($Gettext == "Memo"){
 			$texts = file_get_contents('test.txt');
+			if(empty($texts) == true){
 			$bot->replyText($event->getReplyToken(),$texts);
+			}else{
+				$bot->replyText($event->getReplyToken(),"メモがまだありません！");
+			}
 										}
 		  if($random[0] == "!d" && count($random) == 2){
 			$text = file("test.txt");
+			$count = count($text);
 			$hai = $random[1] - 1;
+			if($hai <= $count){
 			unset($text[$hai]);
 			file_put_contents('test.txt',$text);
 			$Memos = file_get_contents('test.txt');
-			$bot->replyText($event->getReplyToken(),$Memos);
+			replyMultiMessage($bot, $event->getReplyToken(),
+    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("メモを消去しました!"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($Memos));
+			}else{
+				$bot->replyText($event->getReplyToken(),"第二引数が無効です！");
+			}
 
 			/*$pattern = $random[1];
 			for($i = 0;$i <=count($text)- 1;$i++){
