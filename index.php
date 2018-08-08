@@ -51,8 +51,9 @@ foreach ($events as $event) {
     	continue;
   		}
   		$Gettext = (string)$event->getText();
-  		$space_ignored = str_replace(" ", "",$Gettext);
-		  $random = explode(",",$space_ignored);
+		  $space_ignored = str_replace(" ", "",$Gettext);
+		  $space_ignoreds = str_replace("、", ",",$space_ignored);
+		  $random = explode(",",$space_ignoreds);
 		  if($random[0] == "!w" && count($random) == 2){
 			
 			$line = $random[1];
@@ -61,13 +62,27 @@ foreach ($events as $event) {
 			$fp = fopen('test.txt','a');
 			fwrite($fp,$line."\r\n");
 			fclose($fp);
+			$bot->replyText($event->getReplyToken(),"メモを追加しました！"."'".$line."'");
+		  }
+		  if($Gettext == "Memo"){
 			$texts = file_get_contents('test.txt');
-			replyMultiMessage($bot, $event->getReplyToken(),
-												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($random[1]),
-												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
-												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($texts)
-											); 
-			
+			$bot->replyText($event->getReplyToken(),$texts);
+										}
+		  if($random[0] == "!d" && count($random) == 2){
+			$text = explode("\n",'test.txt');
+			$pattern = $random[1];
+			for($i = 0;$i <=count($text)- 1;$i++){
+				if(ereg($pattern,$text[$i])){
+					unset($text[$i]);
+					file_put_contents('test.txt',$text);
+					replyMultiMessage($bot, $event->getReplyToken(),
+    									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("メモを消去しました!"),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
+										
+					
+				}
+			}
+		  }
 			/*$fp = fopen('test.txt','r');
 			while(!feof($fp)){
 				$txt = fgets($fp);
@@ -75,7 +90,7 @@ foreach ($events as $event) {
 			}
 			$bot->replyText($event->getReplyToken(),$alltext);
 			fclose($fp);  */
-		}
+		
   		if ($random[0] == "Random") {
   			
   			//$calums = (int)random[1];
