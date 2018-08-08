@@ -69,7 +69,7 @@ foreach ($events as $event) {
 			$bot->replyText($event->getReplyToken(),$texts);
 										}
 		  if($random[0] == "!d" && count($random) == 2){
-			$text = explode("\n",'test.txt');
+			$text = file('test.txt');
 			$pattern = $random[1];
 			for($i = 0;$i <=count($text)- 1;$i++){
 				$pos = strpos($text[$i],$pattern);
@@ -79,7 +79,7 @@ foreach ($events as $event) {
 					replyMultiMessage($bot, $event->getReplyToken(),
     									new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("メモを消去しました!"),
 											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($text));
-										
+										break;
 					
 				}
 			}
