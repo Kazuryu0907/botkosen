@@ -79,9 +79,9 @@ foreach ($events as $event) {
 			$count = count($text);
 			$hai = (int)$random[1];
 			if($hai <= $count){
-		
+		$hai = $hai -1;
 				$del = $text[$hai];
-			unset($text[--$hai]);
+			unset($text[$hai]);
 			file_put_contents('test.txt',$text);
 			$Memos = file_get_contents('test.txt');
 			replyMultiMessage($bot, $event->getReplyToken(),
