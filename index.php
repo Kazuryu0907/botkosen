@@ -52,7 +52,26 @@ foreach ($events as $event) {
   		}
   		$Gettext = (string)$event->getText();
   		$space_ignored = str_replace(" ", "",$Gettext);
-  		$random = explode(",",$space_ignored);
+		  $random = explode(",",$space_ignored);
+		  if($random[0] == "!w"){
+			$line = $random[1];
+			/*$fp = fopne('test.txt','a');
+			fwrite($fp,$line."¥n");
+			fclose($fp);
+			$texts = file_get_contents('test.txt');*/
+			replyMultiMessage($bot, $event->getReplyToken(),
+												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
+												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(" ")
+											);
+			
+			/*$fp = fopen('test.txt','r');
+			while(!feof($fp)){
+				$txt = fgets($fp);
+				$alltext .= $txt.",";
+			}
+			$bot->replyText($event->getReplyToken(),$alltext);
+			fclose($fp);  */
+	
   		if ($random[0] == "Random") {
   			
   			//$calums = (int)random[1];
@@ -82,30 +101,12 @@ foreach ($events as $event) {
 	$bot->replyText($event->getReplyToken(),"無効な値です");
 }
 
-	if($random[0] == "!w"){
-		$line = $random[1];
-		/*$fp = fopne('test.txt','a');
-		fwrite($fp,$line."¥n");
-		fclose($fp);
-		$texts = file_get_contents('test.txt');*/
-		replyMultiMessage($bot, $event->getReplyToken(),
-											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
-											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(" ")
-    									);
-		
-		/*$fp = fopen('test.txt','r');
-		while(!feof($fp)){
-			$txt = fgets($fp);
-			$alltext .= $txt.",";
-		}
-		$bot->replyText($event->getReplyToken(),$alltext);
-		fclose($fp);  */
-
+	
 	}
 
 }
 
-}
+
   
 			
 						switch($Gettext)
