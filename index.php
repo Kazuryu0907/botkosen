@@ -87,13 +87,19 @@ foreach ($events as $event) {
 		$fp = fopne('test.txt','a');
 		fwrite($fp,$line."¥n");
 		fclose($fp);
-		$fp = fopen('test.txt','r');
+		$texts = file_get_contents('test.txt');
+		replyMultiMessage($bot, $event->getReplyToken(),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($texts)
+    									);
+		
+		/*$fp = fopen('test.txt','r');
 		while(!feof($fp)){
 			$txt = fgets($fp);
 			$alltext .= $txt.",";
 		}
 		$bot->replyText($event->getReplyToken(),$alltext);
-		fclose($fp);
+		fclose($fp);  */
 
 	}
 
