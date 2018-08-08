@@ -84,13 +84,13 @@ foreach ($events as $event) {
 
 	if($random[0] == "!w" && count($random) == 2){
 		$line = $random[1];
-		$fp = fopne('test.txt','a');
+		/*$fp = fopne('test.txt','a');
 		fwrite($fp,$line."¥n");
 		fclose($fp);
-		$texts = file_get_contents('test.txt');
+		$texts = file_get_contents('test.txt');*/
 		replyMultiMessage($bot, $event->getReplyToken(),
 											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
-											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($texts)
+											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(" ")
     									);
 		
 		/*$fp = fopen('test.txt','r');
