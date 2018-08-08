@@ -69,7 +69,7 @@ foreach ($events as $event) {
 			$bot->replyText($event->getReplyToken(),$texts);
 										}
 		  if($random[0] == "!d" && count($random) == 2){
-			$text = explode("\n","test.txt");
+			$text = file("test.txt");
 $count = count($text);
 $bot->replyText($event->getReplyToken(),$count);
 
