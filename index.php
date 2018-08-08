@@ -77,10 +77,11 @@ foreach ($events as $event) {
 		  if($random[0] == "!d" && count($random) == 2){
 			$text = file("test.txt");
 			$count = count($text);
-			$hai = (int)$random[1] -1;
+			$hai = (int)$random[1];
 			if($hai <= $count){
+		
 				$del = $text[$hai];
-			unset($text[$hai]);
+			unset($text[--$hai]);
 			file_put_contents('test.txt',$text);
 			$Memos = file_get_contents('test.txt');
 			replyMultiMessage($bot, $event->getReplyToken(),
