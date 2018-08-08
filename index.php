@@ -57,10 +57,12 @@ foreach ($events as $event) {
 		  if($random[0] == "!w" && count($random) == 2){
 			
 			$line = $random[1];
+			$text = file("test.txt");
+			$count = count($text);
+			$num = $count + 1;
 			
-		  
 			$fp = fopen('test.txt','a');
-			fwrite($fp,$line."\r\n");
+			fwrite($fp,"[".$num."]".$line."\r\n");
 			fclose($fp);
 			$bot->replyText($event->getReplyToken(),"メモを追加しました！"."'".$line."'");
 		  }
