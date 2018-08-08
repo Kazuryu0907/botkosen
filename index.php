@@ -57,6 +57,7 @@ foreach ($events as $event) {
 			
 			$line = $random[1];
 			$bot->replyText($event->getReplyToken(),$line);
+		  }
 			/*$fp = fopne('test.txt','a');
 			fwrite($fp,$line."¥n");
 			fclose($fp);
@@ -106,7 +107,7 @@ foreach ($events as $event) {
 	
 	}
 
-}
+
 
 
   
@@ -252,7 +253,7 @@ foreach ($events as $event) {
 						 //$bot->replyText($event->getReplyToken(), $event->getText());
 						}
   
-  
-
 					}
+
+					
  ?>
