@@ -53,7 +53,7 @@ foreach ($events as $event) {
   		$Gettext = (string)$event->getText();
   		$space_ignored = str_replace(" ", "",$Gettext);
 		  $random = explode(",",$space_ignored);
-		  if($random[0] == "!w" && count($exploded) == 2){
+		  if($random[0] == "!w" && count($random) == 2){
 			
 			$line = $random[1];
 			$bot->replyText($event->getReplyToken(),$line);
