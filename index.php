@@ -53,16 +53,18 @@ foreach ($events as $event) {
   		$Gettext = (string)$event->getText();
   		$space_ignored = str_replace(" ", "",$Gettext);
 		  $random = explode(",",$space_ignored);
-		  if($random[0] == "!w"){
+		  if($random[0] == "!w" && count($exploded) == 2){
+			
 			$line = $random[1];
+			$bot->replyText($event->getReplyToken(),$line);
 			/*$fp = fopne('test.txt','a');
 			fwrite($fp,$line."¥n");
 			fclose($fp);
-			$texts = file_get_contents('test.txt');*/
+			$texts = file_get_contents('test.txt');
 			replyMultiMessage($bot, $event->getReplyToken(),
-												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
+												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($random[1]),
 												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(" ")
-											);
+											); */
 			
 			/*$fp = fopen('test.txt','r');
 			while(!feof($fp)){
