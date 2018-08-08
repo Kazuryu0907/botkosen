@@ -69,8 +69,11 @@ foreach ($events as $event) {
 			$bot->replyText($event->getReplyToken(),$texts);
 										}
 		  if($random[0] == "!d" && count($random) == 2){
-			$text = file('test.txt');
-			$pattern = $random[1];
+			$text = explode("\n","test.txt");
+$count = count($text);
+$bot->replyText($event->getReplyToken(),$count);
+
+			/*$pattern = $random[1];
 			for($i = 0;$i <=count($text)- 1;$i++){
 				$pos = strpos($text[$i],$pattern);
 				if($pos !== false){
@@ -82,7 +85,7 @@ foreach ($events as $event) {
 										break;
 					
 				}
-			}
+			}*/
 		  }
 			/*$fp = fopen('test.txt','r');
 			while(!feof($fp)){
