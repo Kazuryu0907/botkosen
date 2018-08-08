@@ -68,7 +68,7 @@ foreach ($events as $event) {
 		  }
 		  if($Gettext == "Memo"){
 			$texts = file_get_contents('test.txt');
-			if(empty($texts) == true){
+			if(empty($texts) == false){
 			$bot->replyText($event->getReplyToken(),$texts);
 			}else{
 				$bot->replyText($event->getReplyToken(),"メモがまだありません！");
