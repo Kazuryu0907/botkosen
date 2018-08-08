@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) .'/simplehtmldom_1_5/simple_html_dom.php';
+$storage_file_path = dirname(__FILE__) . "/test.json";
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_BOT_CHANNEL_TOKEN'));
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('LINE_BOT_CHANNEL_SECRET')]);
@@ -50,8 +51,8 @@ foreach ($events as $event) {
     	continue;
   		}
   		$Gettext = (string)$event->getText();
-  			
-  		$random = explode(",",$Gettext);
+  		$space_ignored = str_replace(" ", "",$Gettext);
+  		$random = explode(",",$space_ignored);
   		if ($random[0] == "Random") {
   			
   			//$calums = (int)random[1];
@@ -80,21 +81,24 @@ foreach ($events as $event) {
 }else{
 	$bot->replyText($event->getReplyToken(),"無効な値です");
 }
-if (strpos('じゃあ',$Gettext == TRUE)){
-	$bot->replyText($event->getReplyToken(), "じゃあ");
-	if(strpos('っていうのは…',$Gettext == TRUE)){
-		$bot->replyText($event->getReplyToken(), "やりますねぇ！！");
-	}
-	if($random[0] == "!w"){
-								$file = "test.txt";
-								$fp = fopen($file,'a');
-								$write = $random[1].",";
-								fwrite($fp,$write);
-								fclose($fp);
+
+	if($random[0] == "!w" && count($random) == 2){
+		$line = $random[1];
+		$fp = fopne('test.txt','a');
+		fwrite($fp,$line."¥n");
+		fclose($fp);
+		$fp = fopen('test.txt','r');
+		while(!feof($fp)){
+			$txt = fgets($fp);
+			$alltext .= $txt.",";
+		}
+		$bot->replyText($event->getReplyToken(),$alltext);
+		fclose($fp);
 
 	}
 
 }
+
 }
   
 			
@@ -230,16 +234,6 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
 								case "R":
-								$file = "test.txt";
-								$fp = fopen($file,'r');
-								
-								while(!feof($fp)){
-									$txt = fgets($fp);
-										$alltxt .= $txt.",";
-}
-									$bot->replyText($event->getReplyToken(), $alltxt);
-								fclose($fp);
-								case "W":
 								
 
 
@@ -250,6 +244,6 @@ if (strpos('じゃあ',$Gettext == TRUE)){
 						}
   
   
-}
+
 
  ?>
