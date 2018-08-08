@@ -58,7 +58,7 @@ foreach ($events as $event) {
 			$line = $random[1];
 			$bot->replyText($event->getReplyToken(),$line);
 		  
-			$fp = fopne('test.txt','a');
+			$fp = fopen('test.txt','a');
 			fwrite($fp,$line."¥n");
 			fclose($fp);
 			$texts = file_get_contents('test.txt');
