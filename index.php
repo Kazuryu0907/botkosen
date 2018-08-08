@@ -56,7 +56,7 @@ foreach ($events as $event) {
 		  if($random[0] == "!w" && count($random) == 2){
 			
 			$line = $random[1];
-			$bot->replyText($event->getReplyToken(),$line);
+			
 		  
 			$fp = fopen('test.txt','a');
 			fwrite($fp,$line."¥n");
