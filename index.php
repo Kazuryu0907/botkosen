@@ -59,7 +59,7 @@ foreach ($events as $event) {
 			
 		  
 			$fp = fopen('test.txt','a');
-			fwrite($fp,$line."¥n");
+			fwrite($fp,$line."\r\n");
 			fclose($fp);
 			$texts = file_get_contents('test.txt');
 			replyMultiMessage($bot, $event->getReplyToken(),
