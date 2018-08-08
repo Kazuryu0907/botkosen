@@ -72,8 +72,11 @@ foreach ($events as $event) {
 										}
 		  if($random[0] == "!d" && count($random) == 2){
 			$text = file("test.txt");
-$count = count($text);
-$bot->replyText($event->getReplyToken(),$count);
+			$hai = $random[1] - 1;
+			unset($text[$hai]);
+			file_put_contents('test.txt',$text);
+			$Memos = file_get_contents('test.txt');
+			$bot->replyText($event->getReplyToken(),$Memos);
 
 			/*$pattern = $random[1];
 			for($i = 0;$i <=count($text)- 1;$i++){
