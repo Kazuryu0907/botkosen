@@ -82,7 +82,7 @@ foreach ($events as $event) {
 	$bot->replyText($event->getReplyToken(),"無効な値です");
 }
 
-	if($random[0] == "!w" && count($random) == 2){
+	if($random[0] == "!w"){
 		$line = $random[1];
 		/*$fp = fopne('test.txt','a');
 		fwrite($fp,$line."¥n");
