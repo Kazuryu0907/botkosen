@@ -57,15 +57,16 @@ foreach ($events as $event) {
 			
 			$line = $random[1];
 			$bot->replyText($event->getReplyToken(),$line);
-		  }
-			/*$fp = fopne('test.txt','a');
+		  
+			$fp = fopne('test.txt','a');
 			fwrite($fp,$line."¥n");
 			fclose($fp);
 			$texts = file_get_contents('test.txt');
 			replyMultiMessage($bot, $event->getReplyToken(),
 												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($random[1]),
-												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder(" ")
-											); */
+												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($line),
+												new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($texts)
+											); 
 			
 			/*$fp = fopen('test.txt','r');
 			while(!feof($fp)){
@@ -74,7 +75,7 @@ foreach ($events as $event) {
 			}
 			$bot->replyText($event->getReplyToken(),$alltext);
 			fclose($fp);  */
-	
+		}
   		if ($random[0] == "Random") {
   			
   			//$calums = (int)random[1];
