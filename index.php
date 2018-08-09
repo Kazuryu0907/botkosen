@@ -230,7 +230,9 @@ foreach ($events as $event) {
 						$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/300/0/");
 						preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 						$matches = str_replace('<dl>
-						<dt><span class="icnNormalLarge">', '', $matches);
+						', '', $matches);
+						$matches = str_replace('<dt>', '', $matches);
+						$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 						$matches = str_replace('</span>', '', $matches);
 						$matches = str_replace('</dt>', '', $matches);
 						$matches = str_replace('<p>', '', $matches);
@@ -262,7 +264,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/380/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
@@ -294,7 +298,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/321/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
@@ -324,7 +330,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/271/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
@@ -354,7 +362,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/272/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
@@ -384,7 +394,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/312/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
@@ -414,7 +426,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/311/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
@@ -444,7 +458,9 @@ $matches = str_replace('</div>', '', $matches);
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/375/0/");
 							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
 							$matches = str_replace('<dl>
-							<dt><span class="icnNormalLarge">', '', $matches);
+							', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
