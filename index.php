@@ -233,13 +233,13 @@ foreach ($events as $event) {
 						$matches = str_replace('<dt>', '', $matches);
 						$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 						$matches = str_replace('</span>', '', $matches);
+						$matches = str_replace('<span>', '', $matches);
 						$matches = str_replace('</dt>', '', $matches);
 						$matches = str_replace('<p>', '', $matches);
 						$matches = str_replace('</p>', '', $matches);
-						$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+						$matches = str_replace('</dd>', '', $matches);
+						$matches = str_replace('</dl>', '', $matches);
+						$matches = str_replace('</div>', '', $matches);
 						if(preg_match('<dd class="normal">',$matches[1])){
 						$matches = str_replace('<dd class="normal">', '', $matches);
 						$bot->replyText($event->getReplyToken(), "京阪本線・鴨東線".$matches[1]);
@@ -267,21 +267,21 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('<span class="icnNormalLarge">', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "大阪モノレール線".$matches[1]);
 							}else{
 								$matches = str_replace('<dd class="trouble">', '', $matches);
-     $matches = str_replace('<dl>', '', $matches);
-     $matches = str_replace('<dt>', '', $matches);
-     $matches = str_replace('<span class="icnAlertLarge">', '', $matches);
-						$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('<dl>', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+												$matches = str_replace('<span>', '', $matches);
 													$bot->replyText($event->getReplyToken(), "大阪モノレール線".$matches[1]);
 								}
  
@@ -301,20 +301,20 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "大阪メトロ御堂筋線".$matches[1]);
 							}else{
 								$matches = str_replace('<dd class="trouble">', '', $matches);
-     $matches = str_replace('<dl>', '', $matches);
-     $matches = str_replace('<dt>', '', $matches);
-     $matches = str_replace('<span class="icnAlertLarge">', '', $matches);
-						$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('<dl>', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 											$bot->replyText($event->getReplyToken(), "大阪メトロ御堂筋線".$matches[1]);
 							}
  
@@ -332,20 +332,20 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "学研都市線".$matches[1]);
 							}else{
 								$matches = str_replace('<dd class="trouble">', '', $matches);
-     $matches = str_replace('<dl>', '', $matches);
-     $matches = str_replace('<dt>', '', $matches);
-     $matches = str_replace('<span class="icnAlertLarge">', '', $matches);
-						$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('<dl>', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+												$matches = str_replace('<span>', '', $matches);
 													$bot->replyText($event->getReplyToken(), "学研都市線".$matches[1]);
 							}
 							
@@ -363,20 +363,20 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "JR東西線".$matches[1]);
 							}else{
 								$matches = str_replace('<dd class="trouble">', '', $matches);
-     $matches = str_replace('<dl>', '', $matches);
-     $matches = str_replace('<dt>', '', $matches);
-     $matches = str_replace('<span class="icnAlertLarge">', '', $matches);
-						$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('<dl>', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+												$matches = str_replace('<span>', '', $matches);
 													$bot->replyText($event->getReplyToken(), "JR東西線".$matches[1]);
 							}
  
@@ -395,19 +395,19 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "阪急箕面線".$matches[1]);
 							}else{
 								$matches = str_replace('<dd class="trouble">', '', $matches);
-     $matches = str_replace('<dl>', '', $matches);
-     $matches = str_replace('<dt>', '', $matches);
-     $matches = str_replace('<span class="icnAlertLarge">', '', $matches);
-						$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('<dl>', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+												$matches = str_replace('<span>', '', $matches);
 													$bot->replyText($event->getReplyToken(), "阪急箕面線".$matches[1]);
 							}
 							
@@ -425,27 +425,27 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "阪急宝塚本線".$matches[1]);
 							}else{
 								$matches = str_replace('<dd class="trouble">', '', $matches);
-     $matches = str_replace('<dl>', '', $matches);
-     $matches = str_replace('<dt>', '', $matches);
-     $matches = str_replace('<span class="icnAlertLarge">', '', $matches);
-						$matches = str_replace('<span>', '', $matches);
+							$matches = str_replace('<dl>', '', $matches);
+							$matches = str_replace('<dt>', '', $matches);
+							$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+												$matches = str_replace('<span>', '', $matches);
 													$bot->replyText($event->getReplyToken(), "阪急宝塚本線".$matches[1]);
 							}
  
  
 				 
 								break;
-//$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
+
 
 							case "Tango":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/375/0/");
@@ -456,11 +456,11 @@ $matches = str_replace('</div>', '', $matches);
 							$matches = str_replace('</span>', '', $matches);
 							$matches = str_replace('</dt>', '', $matches);
 							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('<span>', '', $matches);
 							$matches = str_replace('</p>', '', $matches);
-							$matches = str_replace('</dd>
-', '', $matches);
-$matches = str_replace('</dl>', '', $matches);
-$matches = str_replace('</div>', '', $matches);
+							$matches = str_replace('</dd>', '', $matches);
+							$matches = str_replace('</dl>', '', $matches);
+							$matches = str_replace('</div>', '', $matches);
 							if(preg_match('<dd class="normal">',$matches[1])){
 								$matches = str_replace('<dd class="normal">', '', $matches);
 								$bot->replyText($event->getReplyToken(), "京都丹後".$matches[1]);
