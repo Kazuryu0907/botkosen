@@ -228,67 +228,236 @@ foreach ($events as $event) {
 						break;
 						case "Keihan":
 						$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/300/0/");
-							preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-							$return = str_replace('</span>', '', $return);
-							$return = str_replace('</dt>', '', $return);
-							$bot->replyText($event->getReplyToken(), "京阪本線・鴨東線".$return[2]);
+						preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+						$matches = str_replace('<dl>
+						<dt><span class="icnNormalLarge">', '', $matches);
+						$matches = str_replace('</span>', '', $matches);
+						$matches = str_replace('</dt>', '', $matches);
+						$matches = str_replace('<p>', '', $matches);
+						$matches = str_replace('</p>', '', $matches);
+						$matches = str_replace('</dd>
+						</dl>
+						</div>', '', $matches);
+						if(preg_match('<dd class="normal">',$matches[1])){
+						$matches = str_replace('<dd class="normal">', '', $matches);
+						$bot->replyText($event->getReplyToken(), "京阪本線・鴨東線".$matches[1]);
+						}else{
+						$matches = str_replace('<dd class="trouble">', '', $matches);
+						$matches = str_replace('<dl>', '', $matches);
+						$matches = str_replace('<dt>', '', $matches);
+						$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+											$matches = str_replace('<span>', '', $matches);
+											$bot->replyText($event->getReplyToken(), "京阪本線・鴨東線".$matches[1]);
+						}
+
+
+			 
+					
+						
+
+							
 							break;
 							case "Mono":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/380/0/");
-							preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-							$return = str_replace('</span>', '', $return);
-							$return = str_replace('</dt>', '', $return);
-							$bot->replyText($event->getReplyToken(), "大阪モノレール線".$return[2]);
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "大阪モノレール線".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+													$matches = str_replace('<span>', '', $matches);
+													$bot->replyText($event->getReplyToken(), "大阪モノレール線".$matches[1]);
+								}
+ 
+ 
+				 
+							
+							
+					
 							break;
 
 							case "Metro":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/321/0/");
-							preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-							$return = str_replace('</span>', '', $return);
-							$return = str_replace('</dt>', '', $return);
-							$bot->replyText($event->getReplyToken(), "大阪メトロ御堂筋線".$return[2]);
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "大阪メトロ御堂筋線".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+											$matches = str_replace('<span>', '', $matches);
+											$bot->replyText($event->getReplyToken(), "大阪メトロ御堂筋線".$matches[1]);
+							}
+ 
+ 
+				 
+							
 							break;
 							
 							case "Jr":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/271/0/");
-								preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-								$return = str_replace('</span>', '', $return);
-								$return = str_replace('</dt>', '', $return);
-								$bot->replyText($event->getReplyToken(), "学研都市線".$return[2]);
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "学研都市線".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+													$matches = str_replace('<span>', '', $matches);
+													$bot->replyText($event->getReplyToken(), "学研都市線".$matches[1]);
+							}
+							
+ 
+				 
+								
 								break;
 
 								case "JrT":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/272/0/");
-								preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-								$return = str_replace('</span>', '', $return);
-								$return = str_replace('</dt>', '', $return);
-								$bot->replyText($event->getReplyToken(), "JR東西線".$return[2]);
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "JR東西線".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+													$matches = str_replace('<span>', '', $matches);
+													$bot->replyText($event->getReplyToken(), "JR東西線".$matches[1]);
+							}
+ 
+ 
+				 
+								
 								break;
 								
 								case "Minou":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/312/0/");
-								preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-								$return = str_replace('</span>', '', $return);
-								$return = str_replace('</dt>', '', $return);
-								$bot->replyText($event->getReplyToken(), "阪急箕面線".$return[2]);
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "阪急箕面線".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+													$matches = str_replace('<span>', '', $matches);
+													$bot->replyText($event->getReplyToken(), "阪急箕面線".$matches[1]);
+							}
+							
+ 
+				 
+								
 								break;
 
 								case "Takara":
 							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/311/0/");
-								preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-								$return = str_replace('</span>', '', $return);
-								$return = str_replace('</dt>', '', $return);
-								$bot->replyText($event->getReplyToken(), "阪急宝塚本線".$return[2]);
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "阪急宝塚本線".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+													$matches = str_replace('<span>', '', $matches);
+													$bot->replyText($event->getReplyToken(), "阪急宝塚本線".$matches[1]);
+							}
+ 
+ 
+				 
 								break;
 //$mojiretu = mb_substr($bun, ($iti=(mb_strpos($bun,'<div id="mdServiceStatus">')+1)), (mb_strpos($bun,'</div><!--/#mdServiceStatus-->'))-$iti);
 
-case "Tango":
-$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/375/0/");
-preg_match('/(<span class="icnNormalLarge">)(.*)(<dd class="normal">)/is', $html, $return);
-$return = str_replace('</span>', '', $return);
-$return = str_replace('</dt>', '', $return);
-$bot->replyText($event->getReplyToken(), "京都丹後".$return[2]);
-break;
+							case "Tango":
+							$html = file_get_contents("https://transit.yahoo.co.jp/traininfo/detail/375/0/");
+							preg_match('/<div id="mdServiceStatus">(.*?)<!--\/#mdServiceStatus-->/is', $html , $matches);
+							$matches = str_replace('<dl>
+							<dt><span class="icnNormalLarge">', '', $matches);
+							$matches = str_replace('</span>', '', $matches);
+							$matches = str_replace('</dt>', '', $matches);
+							$matches = str_replace('<p>', '', $matches);
+							$matches = str_replace('</p>', '', $matches);
+							$matches = str_replace('</dd>
+							</dl>
+							</div>', '', $matches);
+							if(preg_match('<dd class="normal">',$matches[1])){
+								$matches = str_replace('<dd class="normal">', '', $matches);
+								$bot->replyText($event->getReplyToken(), "京都丹後".$matches[1]);
+							}else{
+								$matches = str_replace('<dd class="trouble">', '', $matches);
+								$matches = str_replace('<dl>', '', $matches);
+								$matches = str_replace('<dt>', '', $matches);
+								$matches = str_replace('<span class="icnAlertLarge">', '', $matches);
+													$matches = str_replace('<span>', '', $matches);
+													$bot->replyText($event->getReplyToken(), "京都丹後".$matches[1]);
+							}
+							
+							break;
 								
 
 
