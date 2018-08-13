@@ -5,6 +5,8 @@ require_once dirname(__FILE__) .'/simplehtmldom_1_5/simple_html_dom.php';
 $storage_file_path = dirname(__FILE__) . "/test.json";
 $request = file_get_contents('php://input');
 $jsonObj = json_decode($request);
+$content = $jsonObj->result{0}->content;
+$content_type = $content->contentType;
 
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_BOT_CHANNEL_TOKEN'));
@@ -148,7 +150,12 @@ foreach ($events as $event) {
 	
 	}
 
+if($content_type == "location"){
+	$lat   = $location->latitude;
+	$lon   = $location->longitude;
+	$bot->replyText($event->getReplyToken(),"緯度".$lat."経度".$lon);
 
+}
 
 
   
@@ -478,12 +485,7 @@ foreach ($events as $event) {
 							
 							break;
 								
-							case "AED";
-							$location = $jsonObj->{"result"}[0]->{"content"}->{"location"};
-							$lat   = $location->latitude;
-							$lon   = $location->longitude;
-							$bot->replyText($event->getReplyToken(), "緯度".$lat."経度".$lon);
-							break;
+							
 
 
 
