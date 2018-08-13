@@ -199,6 +199,7 @@ foreach ($events as $event) {
 											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Kosen'で高専ＨＰの更新を確認できます"),
 											new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("運行情報確認:'Keihan'(京阪本線・鴨東線).'Mono(大阪モノレール線)'.'Metro'(大阪メトロ御堂筋線).'Jr'(学研都市線).'JrT'(JR東西線).'Minou'(阪急箕面線).'Takara'(阪急宝塚本線)"),
 										new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Keihanchien'で京阪の遅延証明書が発行されているか確認できます"),
+										new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("個人チャットにおいて、位置情報を送信することで、周辺の公共のAEDの位置を検索します"),
 										new \LINE\LINEBot\MessageBuilder\TextMessageBuilder("'Memo'で現在記録されているメモを表示します  '!w,(メモしたい文)'(括弧はいらない)で、メモに文を追加できます  '!d,(消したいメモ番号)'(括弧はいらない)で指定したメモ番号のメモを消去できます"));
 						break;
 						/*
