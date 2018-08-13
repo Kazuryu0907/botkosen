@@ -50,6 +50,10 @@ foreach ($events as $event) {
   if (!($event instanceof \LINE\LINEBot\Event\MessageEvent)) {
     error_log('Non message event has come');
     continue;
+  }if (($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage)) {
+	$lat   = $location->latitude;
+	$lon   = $location->longitude;
+	$bot->replyText($event->getReplyToken(),"緯度".$lat."経度".$lon);
   }
   	if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
     	error_log('Non text message has come');
@@ -150,12 +154,6 @@ foreach ($events as $event) {
 	
 	}
 
-if($content_type == "location"){
-	$lat   = $location->latitude;
-	$lon   = $location->longitude;
-	$bot->replyText($event->getReplyToken(),"緯度".$lat."経度".$lon);
-
-}
 
 
   
