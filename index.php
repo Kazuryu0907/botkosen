@@ -3,6 +3,9 @@
 require_once __DIR__ . '/vendor/autoload.php';
 require_once dirname(__FILE__) .'/simplehtmldom_1_5/simple_html_dom.php';
 $storage_file_path = dirname(__FILE__) . "/test.json";
+$request = file_get_contents('php://input');
+$jsonObj = json_decode($request);
+
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_BOT_CHANNEL_TOKEN'));
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('LINE_BOT_CHANNEL_SECRET')]);
@@ -475,6 +478,12 @@ foreach ($events as $event) {
 							
 							break;
 								
+							case "AED";
+							$location = $jsonObj->{"result"}[0]->{"content"}->{"location"};
+							$lat   = $location->latitude;
+							$lon   = $location->longitude;
+							$bot->replyText($event->getReplyToken(), "緯度".$lat."経度".$lon);
+							break;
 
 
 
