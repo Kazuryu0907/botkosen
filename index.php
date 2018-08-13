@@ -59,7 +59,8 @@ foreach ($events as $event) {
   }if (($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage)) {
 	$lat   = $event->getLatitude();
 	$lon   = $event->getLongitude();
-	$url = "https://aed.azure-mobile.net/api/NearAED?lat=".$lat."&lng=".$lon;
+	//$url = "https://aed.azure-mobile.net/api/NearAED?lat=".$lat."&lng=".$lon;
+	$url = "https://aed.azure-mobile.net/api/AEDSearch?lat=34.7703764&lng=135.6291427";
 	$aeds = file_get_contents($url);
 	$aeds = json_decode($aeds);
 	$count = count($aeds);
