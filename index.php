@@ -6,7 +6,7 @@ $storage_file_path = dirname(__FILE__) . "/test.json";
 $request = file_get_contents('php://input');
 $jsonObj = json_decode($request);
 $content = $jsonObj->result{0}->content;
-$content_type = $content->contentType;
+
 
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_BOT_CHANNEL_TOKEN'));
@@ -51,9 +51,9 @@ foreach ($events as $event) {
     error_log('Non message event has come');
     continue;
   }if (($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage)) {
-	$lat   = $location->latitude;
-	$lon   = $location->longitude;
-	$bot->replyText($event->getReplyToken(),"緯度".$lat."経度".$lon);
+	//$lat   = $location->latitude;
+	//$lon   = $location->longitude;
+	$bot->replyText($event->getReplyToken(), "Latitude: {$event->getLatitude()}, Longtitude: {$event->getLongitude()}");
   }
   	if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
     	error_log('Non text message has come');
