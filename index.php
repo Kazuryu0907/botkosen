@@ -44,6 +44,12 @@ function replyImageMessage($bot, $replyToken, $originalImageUrl, $previewImageUr
     error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
   }
 }
+function replyLocationMessage($bot, $replyToken, $title, $address, $lat, $lon) {
+	$response = $bot->replyMessage($replyToken, new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($title, $address, $lat, $lon));
+	if (!$response->isSucceeded()) {
+	  error_log('Failed!'. $response->getHTTPStatus . ' ' . $response->getRawBody());
+	}
+  }
 $Hnum = 0;
 
 foreach ($events as $event) {
@@ -51,9 +57,36 @@ foreach ($events as $event) {
     error_log('Non message event has come');
     continue;
   }if (($event instanceof \LINE\LINEBot\Event\MessageEvent\LocationMessage)) {
-	//$lat   = $location->latitude;
-	//$lon   = $location->longitude;
-	$bot->replyText($event->getReplyToken(), "Latitude: {$event->getLatitude()}, Longtitude: {$event->getLongitude()}");
+	$lat   = $event->getLatitude();
+	$lon   = $event->getLongitude();
+	$url = "https://aed.azure-mobile.net/api/NearAED?lat=".$lat."&lng=".$lon;
+	$aeds = file_get_contents($url);
+	$aeds = json_decode($aeds);
+	$count = count($aeds);
+	if($count == 0){
+		$bot->replyText($event->getReplyToken(),"近くに登録されているAEDはありません・・");
+	}elseif($count == 1){
+		replyLocationMessage($bot, $event->getReplyToken(), $aeds[0]->LocationName, $aeds[0]->Perfecture.$aeds[0]->City.$aeds[0]->AddressArea, $aeds[0]->Latitude,$aeds[0]->Longitude);
+	}elseif($count == 2){
+		replyMultiMessage($bot, $event->getReplyToken(), 
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[0]->LocationName, $aeds[0]->Perfecture.$aeds[0]->City.$aeds[0]->AddressArea, $aeds[0]->Latitude,$aeds[0]->Longitude),
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[1]->LocationName, $aeds[1]->Perfecture.$aeds[1]->City.$aeds[1]->AddressArea, $aeds[1]->Latitude,$aeds[1]->Longitude)
+	);
+	}elseif($count == 3){
+		replyMultiMessage($bot, $event->getReplyToken(), 
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[0]->LocationName, $aeds[0]->Perfecture.$aeds[0]->City.$aeds[0]->AddressArea, $aeds[0]->Latitude,$aeds[0]->Longitude),
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[1]->LocationName, $aeds[1]->Perfecture.$aeds[1]->City.$aeds[1]->AddressArea, $aeds[1]->Latitude,$aeds[1]->Longitude),
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[2]->LocationName, $aeds[2]->Perfecture.$aeds[2]->City.$aeds[2]->AddressArea, $aeds[2]->Latitude,$aeds[2]->Longitude)
+	);
+	}else{
+		replyMultiMessage($bot, $event->getReplyToken(), 
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[0]->LocationName, $aeds[0]->Perfecture.$aeds[0]->City.$aeds[0]->AddressArea, $aeds[0]->Latitude,$aeds[0]->Longitude),
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[1]->LocationName, $aeds[1]->Perfecture.$aeds[1]->City.$aeds[1]->AddressArea, $aeds[1]->Latitude,$aeds[1]->Longitude),
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[2]->LocationName, $aeds[2]->Perfecture.$aeds[2]->City.$aeds[2]->AddressArea, $aeds[2]->Latitude,$aeds[2]->Longitude),
+		new \LINE\LINEBot\MessageBuilder\LocationMessageBuilder($aeds[3]->LocationName, $aeds[3]->Perfecture.$aeds[3]->City.$aeds[3]->AddressArea, $aeds[3]->Latitude,$aeds[3]->Longitude)
+	);
+	}
+
   }
   	if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
     	error_log('Non text message has come');
