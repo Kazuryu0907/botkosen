@@ -6,6 +6,7 @@ $storage_file_path = dirname(__FILE__) . "/test.json";
 $request = file_get_contents('php://input');
 $jsonObj = json_decode($request);
 $content = $jsonObj->result{0}->content;
+$mb = mb_strlen($Gettext);
 
 
 
@@ -91,11 +92,40 @@ foreach ($events as $event) {
   	if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
     	error_log('Non text message has come');
     	continue;
-  		}
+		  }
   		$Gettext = (string)$event->getText();
 		  $space_ignored = str_replace(" ", "",$Gettext);
 		  $space_ignoreds = str_replace("、", ",",$space_ignored);
 		  $random = explode(",",$space_ignoreds);
+		
+		$curl = curl_init();
+		$file_date = "aa.csv";
+		$tmpfile  = $_FILES[$file_data]['tmp_name'];
+		$filename = $_FILES[$file_data]['name'];
+		  $data = array(
+			  'filedata_param' => '@' . $tmpfile . ';filename=' . $filename
+		  );
+		  curl_setopt_array($curl, array(
+			CURLOPT_URL => "https://bot-64f966.appdrag.com/api/Delete",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS => ""
+		  ));
+		  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+
+		  $response = curl_exec($curl);
+		  $err = curl_error($curl);
+		  curl_close($curl);
+		  
+		  if ($err) {
+			echo "cURL Error #:" . $err;
+		  } else {
+			echo $response;
+		  }
 		  if($random[0] == "!w" && count($random) == 2){
 			
 			$line = $random[1];
