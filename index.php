@@ -6,7 +6,7 @@ $storage_file_path = dirname(__FILE__) . "/test.json";
 $request = file_get_contents('php://input');
 $jsonObj = json_decode($request);
 $content = $jsonObj->result{0}->content;
-$mb = mb_strlen($Gettext);
+#$mb = mb_strlen($Gettext);
 
 
 
