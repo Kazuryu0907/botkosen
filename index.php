@@ -6,10 +6,64 @@ $storage_file_path = dirname(__FILE__) . "/test.json";
 $request = file_get_contents('php://input');
 $jsonObj = json_decode($request);
 $content = $jsonObj->result{0}->content;
-#$mb = mb_strlen($Gettext);
+$mb = mb_strlen($Gettext);
 
+function DownloadDB(){
+	$headers = array(
+		"Authorization:Bearer Bearer fDO986b8w1AAAAAAAAAAFY7SxbaDd5IwAA0V8UO9vit3ayxm78Mh3ykC6i5OC_N7",
+		'Dropbox-API-Arg:{"path":"/backUP.txt"}'
+		);
+	
+	
+	$url = "https://content.dropboxapi.com/2/files/download";
+	$ch = curl_init(); // はじめ
+	curl_setopt($ch, CURLOPT_URL, $url); 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	
+	$html =  curl_exec($ch);
+	curl_close($ch); //終了
+	return $html;
+}
 
+function UploadDB($fullpath){
+    $url = "https://content.dropboxapi.com/2/files/upload";
+	$ch2 = curl_init($url);
+	curl_setopt($ch2, CURLOPT_POST, TRUE); // POST
+	curl_setopt($ch2, CURLOPT_BINARYTRANSFER, TRUE); // --data-binary
+	$headers = array(
+		"Authorization:Bearer fDO986b8w1AAAAAAAAAAFY7SxbaDd5IwAA0V8UO9vit3ayxm78Mh3ykC6i5OC_N7",
+		'Content-Type: application/octet-stream',
+		'Dropbox-API-Arg: {"path":"/backUP.txt"}'
+		);
+	curl_setopt($ch2, CURLOPT_HTTPHEADER, $headers);
+	curl_setopt($ch2, CURLOPT_POSTFIELDS, $fullpath);
+	$html =  curl_exec($ch2);
+	curl_close($ch2); //終了
+}
 
+function DelDB(){
+	$headers = array(
+		"Authorization:Bearer fDO986b8w1AAAAAAAAAAFY7SxbaDd5IwAA0V8UO9vit3ayxm78Mh3ykC6i5OC_N7",
+		'Content-Type: application/json'
+	
+		);
+	
+	
+	$url = "https://api.dropboxapi.com/2/files/delete_v2";
+	$ch = curl_init(); // はじめ
+	curl_setopt($ch, CURLOPT_URL, $url); 
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_BINARYTRANSFER, TRUE); // --data-binary
+	curl_setopt($ch, CURLOPT_POST, TRUE); // POST
+	//ヘッダー追加オプション
+	curl_setopt($ch, CURLOPT_POSTFIELDS,'{"path":"/backUP.txt"}');
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+	
+	$html =  curl_exec($ch);
+	curl_close($ch); //終了
+	return $html;
+}
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient(getenv('LINE_BOT_CHANNEL_TOKEN'));
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => getenv('LINE_BOT_CHANNEL_SECRET')]);
 
@@ -92,40 +146,11 @@ foreach ($events as $event) {
   	if (!($event instanceof \LINE\LINEBot\Event\MessageEvent\TextMessage)) {
     	error_log('Non text message has come');
     	continue;
-		  }
+  		}
   		$Gettext = (string)$event->getText();
 		  $space_ignored = str_replace(" ", "",$Gettext);
 		  $space_ignoreds = str_replace("、", ",",$space_ignored);
 		  $random = explode(",",$space_ignoreds);
-		
-		$curl = curl_init();
-		$file_date = "aa.csv";
-		$tmpfile  = $_FILES[$file_data]['tmp_name'];
-		$filename = $_FILES[$file_data]['name'];
-		  $data = array(
-			  'filedata_param' => '@' . $tmpfile . ';filename=' . $filename
-		  );
-		  curl_setopt_array($curl, array(
-			CURLOPT_URL => "https://bot-64f966.appdrag.com/api/Delete",
-			CURLOPT_RETURNTRANSFER => true,
-			CURLOPT_ENCODING => "",
-			CURLOPT_MAXREDIRS => 10,
-			CURLOPT_TIMEOUT => 30,
-			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-			CURLOPT_CUSTOMREQUEST => "POST",
-			CURLOPT_POSTFIELDS => ""
-		  ));
-		  curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-
-		  $response = curl_exec($curl);
-		  $err = curl_error($curl);
-		  curl_close($curl);
-		  
-		  if ($err) {
-			echo "cURL Error #:" . $err;
-		  } else {
-			echo $response;
-		  }
 		  if($random[0] == "!w" && count($random) == 2){
 			
 			$line = $random[1];
@@ -554,6 +579,10 @@ foreach ($events as $event) {
 					//���ׂĈႤ�ꍇ
 					default:
 						 //$bot->replyText($event->getReplyToken(), $event->getText());
+						 $a = DownloadDB();
+						 $a = $a + "," + $Gettext;
+						 DelDB();
+						 UploadDB($a);
 						}
   
 					}
