@@ -580,6 +580,7 @@ foreach ($events as $event) {
 					case "ちびたま":
 						DelDB();
 						UploadDB(".");
+						break;
 					default:
 						 //$bot->replyText($event->getReplyToken(), $event->getText());
 						 $a = DownloadDB();
