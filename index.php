@@ -580,7 +580,7 @@ foreach ($events as $event) {
 					default:
 						 //$bot->replyText($event->getReplyToken(), $event->getText());
 						 $a = DownloadDB();
-						 $a = $a + "," + $Gettext;
+						 $a .= ",".$Gettext;
 						 DelDB();
 						 UploadDB($a);
 						}
