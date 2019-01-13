@@ -579,7 +579,7 @@ foreach ($events as $event) {
 					//���ׂĈႤ�ꍇ
 					case "ちびたま":
 						DelDB();
-						Upload(".");
+						UploadDB(".");
 					default:
 						 //$bot->replyText($event->getReplyToken(), $event->getText());
 						 $a = DownloadDB();
