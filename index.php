@@ -10,7 +10,7 @@ $content = $jsonObj->result{0}->content;
 
 function DownloadDB(){
 	$headers = array(
-		"Authorization:Bearer Bearer fDO986b8w1AAAAAAAAAAFY7SxbaDd5IwAA0V8UO9vit3ayxm78Mh3ykC6i5OC_N7",
+		"Authorization:Bearer fDO986b8w1AAAAAAAAAAFY7SxbaDd5IwAA0V8UO9vit3ayxm78Mh3ykC6i5OC_N7",
 		'Dropbox-API-Arg:{"path":"/backUP.txt"}'
 		);
 	
